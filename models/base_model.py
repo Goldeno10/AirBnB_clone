@@ -31,6 +31,8 @@ class BaseModel:
     def save(self):
         """Updates the records"""
         self.updated_at = datetime.datetime.now()
+        storage.new()
+        storage.save()
 
     def to_dict(self):
         """ Return dictionary representation of object """

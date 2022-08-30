@@ -11,7 +11,7 @@ class FileStorage:
     """This class 'FileStorage' erializes instances to a JSON file and deserializes
     JSON file to instances
     """
-    __file_path = file.json
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -21,12 +21,13 @@ class FileStorage:
         __objects[type(obj).__name__.id] = obj
 
     def save(self):
-        with open(___file_path, 'w' encoding="utf-8") as f:
+        with open(__file_path, 'w', encoding="utf-8") as f:
             if __obejects != None and len(__objects) > 0:
-                new_l = [__objects[key].to_dict() for key in __objects.keys()]
-                json.dump(new_l, f)
+                new_d = {keys: value.to_dict() for key, vlaue in __objects}
+                json.dumps(new_d, f)
     
     def reload(self):
-        if os.path.exists(__file_path):
-            with open(__file_path, 'r'
+        if os.path.exists(__file_path) != False:
+            with open(__file_path, 'r', encoding="utf-8") as f:
+                __objects = json.load(f)
 
