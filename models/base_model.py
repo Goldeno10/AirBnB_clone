@@ -7,10 +7,7 @@ import datetime
 import uuid
 
 
-class 
-
-
-BaseModel:
+class BaseModel:
     """This class 'BaseModel' defines all common attributes/methods for other classes """
     def __init__(self, *args, **kwargs):
         """Initializer method"""
