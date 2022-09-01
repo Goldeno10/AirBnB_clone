@@ -33,7 +33,7 @@ class FileStorage:
         (__file_path) exists ; otherwise, does nothing
         """
         from models.base_model import BaseModel
-
+        from models.user import User
 
         if os.path.exists(type(self).__file_path) is True:
             with open(type(self).__file_path, "r") as f:
