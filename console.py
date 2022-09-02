@@ -22,9 +22,9 @@ class HBNBCommand(cmd.Cmd):
            'State': State,
            'Amenity': Amenity,
            'Review': Review}
-    cmd_list = ['create', 'all', 'update', 'show', 'destroy', 'count']
-    cls_list = ['BaseModel', 'State', 'Amenity',
-            'Place', 'City', 'User', 'Review']
+    cmd_l = ['create', 'all', 'update', 'show', 'destroy', 'count']
+    cls_l = ['BaseModel', 'State', 'Amenity',
+             'Place', 'City', 'User', 'Review']
 
     def precmd(self, arg):
         """parses command input"""
@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
             if len(arg_l) == 2:
                 cmd = arg_l[1].split('(')
                 args = cmd[1].split(')')
-                if arg_l[0] in type(self).cls_list and cmd[0] in type(self).cmd_list:
+                if arg_l[0] in type(self).cls_l and cmd[0] in type(self).cmd_l:
                     arg = f'{cmd[0]} {arg_l[0]} {args[0]}'
         return arg
 
