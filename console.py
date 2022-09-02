@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+"""This module contains the HBNBCommand class a
+console console class
+"""
 
 
 import cmd
+import json
 from models import storage
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -37,18 +41,18 @@ class HBNBCommand(cmd.Cmd):
                     arg = f'{cmd[0]} {arg_l[0]} {args[0]}'
         return arg
 
-    def do_create(self, model_type):
+    def do_create(self, line):
         """Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id.
         Ex: $ create BaseModel
         """
-        if not model_type:
+        if not line:
             print("** class name missing **")
-        if arg:
-            if model_type not in type(self).cls.keys():
+        if line:
+            if line not in type(self).cls.keys():
                 print("** class doesn't exist **")
             else:
-                new_instance = type(self).cls[model_type]()
+                new_instance = type(self).cls[line]()
                 new_instance.save()
                 print(new_instance.id)
 
@@ -157,9 +161,13 @@ class HBNBCommand(cmd.Cmd):
         adding or updating attribute (save the change into the JSON file).
         Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com".
         """
+        dict_flag = 0
         if not line:
             print("** class name missing **")
         else:
+            if '{' in line:
+                line_l = line.split(' {')[1]
+                dict_flag = 1
             args = line.split()
             obj = {}
             c_flag = 0
@@ -175,7 +183,6 @@ class HBNBCommand(cmd.Cmd):
                     else:
                         print("** instance id missing **")
                         return
-
             if len(args) >= 2:
                 if c_flag == 0:
                     return
@@ -194,14 +201,31 @@ class HBNBCommand(cmd.Cmd):
                             print("** no instance found **")
                             return
             if len(args) >= 3:
+                if dict_flag == 1:
+                    arg_str = "{" + line_l
+                    arg_str = arg_str.replace('\'', '"')
+                    arg_dict = json.loads(arg_str)
+                    if isinstance(arg_dict, dict):
+                        obj = instance[obj_id]
+                        try:
+                            for k, v in arg_dict.items():
+                                setattr(obj,
+                                        k.strip('"'),
+                                        v.strip('"')
+                                        if isinstance(v, str) else v)
+                            obj.save()
+                            return
+                        except Exception:
+                            print("** attribute name missing **")
+                            return
                 if id_flag == 0:
                     return
                 else:
                     obj = instance[obj_id]
                     if len(args) > 3:
-                        setattr(obj, args[2].strip('"').strip(','),
-                                args[3].strip('"').strip(','))
-                        storage.save()
+                        setattr(obj, args[2].strip(',').strip('"'),
+                                args[3].strip(',').strip('"'))
+                        obj.save()
                     else:
                         print("** value missing **")
                         return
