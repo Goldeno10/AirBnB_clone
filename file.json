@@ -22,6 +22,7 @@
         "first_name": "MuhaIbra",
         "email": "airbnb2@mail.com",
         "password": "root",
+        "Age": "45",
         "__class__": "User"
     },
     "Place.6bc7d599-e65f-4a0b-b92b-398abf6b8cfd": {
@@ -54,6 +55,7 @@
         "last_name": "Abu",
         "email": "airbnb@mail.com",
         "password": "root",
+        "age\"": "89",
         "__class__": "User"
     },
     "User.1d7f3803-6905-4bb9-bda7-a68dc026e137": {
