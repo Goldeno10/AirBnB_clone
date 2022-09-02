@@ -22,19 +22,32 @@ class HBNBCommand(cmd.Cmd):
            'State': State,
            'Amenity': Amenity,
            'Review': Review}
+    cmd_list = ['create', 'all', 'update', 'show', 'destroy', 'count']
+    cls_list = ['BaseModel', 'User', 'Amenity', 'Place', 'City', 'State', 'Review']
 
-    def do_create(self, arg):
+    def precmd(self, arg):
+        """parses command input"""
+        if '.' in arg and '(' in arg and ')' in arg:
+            arg_l = arg.split('.')
+            if len(arg_l) == 2:
+                cmd = arg_l[1].split('(')
+                args = cnd[1].strip(')')
+                if cls[0] in type(self).cls_list and cnd[0] in type(self).cmd_list:
+                    arg = cnd[0] + ' ' + cls[0] + ' ' + args[0]
+                return arg
+
+    def do_create(self, model_type):
         """Creates a new instance of BaseModel, saves it
         (to the JSON file) and prints the id.
         Ex: $ create BaseModel
         """
-        if not arg:
+        if not model_type:
             print("** class name missing **")
         if arg:
-            if arg not in type(self).cls.keys():
+            if model_type not in type(self).cls.keys():
                 print("** class doesn't exist **")
             else:
-                new_instance = type(self).cls[arg]()
+                new_instance = type(self).cls[model_type]()
                 new_instance.save()
                 print(new_instance.id)
 
@@ -192,6 +205,10 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Do nothing when line is empty"""
         pass
+
+    def help_help(self):
+        """ Prints command (help) description """
+        print("Provides description of selected command")
 
 
 if __name__ == '__main__':
