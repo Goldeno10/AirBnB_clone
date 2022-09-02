@@ -14,5 +14,24 @@
         "name": "5",
         "my_number": 89,
         "__class__": "BaseModel"
+    },
+    "User.0d73ac43-9dde-4e3e-be7d-2b996e2050b0": {
+        "id": "0d73ac43-9dde-4e3e-be7d-2b996e2050b0",
+        "created_at": "2022-09-01T09:44:38.441308",
+        "updated_at": "2022-09-01T09:44:38.441349",
+        "first_name": "Betty",
+        "last_name": "Bar",
+        "email": "airbnb@mail.com",
+        "password": "root",
+        "__class__": "User"
+    },
+    "User.550e0e4c-6b48-414d-9eef-8a697cf7462a": {
+        "id": "550e0e4c-6b48-414d-9eef-8a697cf7462a",
+        "created_at": "2022-09-01T09:44:38.442160",
+        "updated_at": "2022-09-01T09:44:38.442189",
+        "first_name": "John",
+        "email": "airbnb2@mail.com",
+        "password": "root",
+        "__class__": "User"
     }
 }
