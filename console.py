@@ -23,7 +23,8 @@ class HBNBCommand(cmd.Cmd):
            'Amenity': Amenity,
            'Review': Review}
     cmd_list = ['create', 'all', 'update', 'show', 'destroy', 'count']
-    cls_list = ['BaseModel', 'User', 'Amenity', 'Place', 'City', 'State', 'Review']
+    cls_list = ['BaseModel', 'State', 'Amenity',
+            'Place', 'City', 'User', 'Review']
 
     def precmd(self, arg):
         """parses command input"""
@@ -31,10 +32,10 @@ class HBNBCommand(cmd.Cmd):
             arg_l = arg.split('.')
             if len(arg_l) == 2:
                 cmd = arg_l[1].split('(')
-                args = cnd[1].strip(')')
-                if cls[0] in type(self).cls_list and cnd[0] in type(self).cmd_list:
-                    arg = cnd[0] + ' ' + cls[0] + ' ' + args[0]
-                return arg
+                args = cmd[1].split(')')
+                if arg_l[0] in type(self).cls_list and cmd[0] in type(self).cmd_list:
+                    arg = f'{cmd[0]} {arg_l[0]} {args[0]}'
+        return arg
 
     def do_create(self, model_type):
         """Creates a new instance of BaseModel, saves it
@@ -51,15 +52,25 @@ class HBNBCommand(cmd.Cmd):
                 new_instance.save()
                 print(new_instance.id)
 
-    def do_show(self, line):
+    def do_count(self, cls_name):
+        """Counts the number of instances of a class"""
+        count = 0
+        all_objs = storage.all()
+        for k, v in all_objs.items():
+            cls = k.split('.')
+            if cls[0] == cls_name:
+                count = count + 1
+        print(count)
+
+    def do_show(self, arg):
         """Prints the string representation of an instance
         based on the class name and id.
         Ex: $ show BaseModel 1234-1234-1234.
         """
-        if not line:
+        if not arg:
             print("** class name missing **")
         else:
-            args = line.split()
+            args = arg.split()
             if len(args) > 2:
                 return
             if len(args) == 1:
@@ -194,11 +205,11 @@ class HBNBCommand(cmd.Cmd):
                             print("** value missing **")
                             return
 
-    def do_quit(self, arg):
+    def do_quit(self, line):
         "Quit command to exit the program"
         return True
 
-    def do_EOF(self, arg):
+    def do_EOF(self, line):
         "EOF command to exit the program"
         return True
 
