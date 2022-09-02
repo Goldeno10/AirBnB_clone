@@ -81,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
                 return
             if len(args) == 2:
                 arg1 = args[0]
-                arg2 = args[1]
+                arg2 = args[1].strip('"')
                 obj_id = f'{arg1}.{arg2}'
                 if arg1 in type(self).cls.keys():
                     instance = storage.all()
@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
                 return
             if len(args) == 2:
                 arg1 = args[0]
-                arg2 = args[1]
+                arg2 = args[1].strip('"')
                 obj_id = f'{arg1}.{arg2}'
                 if arg1 in type(self).cls.keys():
                     instance = storage.all()
@@ -180,7 +180,8 @@ class HBNBCommand(cmd.Cmd):
                 if c_flag == 0:
                     return
                 else:
-                    obj_id = f'{args[0]}.{args[1]}'
+                    arg1 = args[1].strip(',').strip('"')
+                    obj_id = f"{args[0]}.{arg1}"
                     instance = storage.all()
                     if args[0] in type(self).cls.keys():
                         if obj_id in instance.keys():
@@ -197,13 +198,13 @@ class HBNBCommand(cmd.Cmd):
                     return
                 else:
                     obj = instance[obj_id]
-                    if args[2] in obj.to_dict():
-                        if len(args) > 3:
-                            setattr(obj, args[2], args[3].strip('"'))
-                            storage.save()
-                        else:
-                            print("** value missing **")
-                            return
+                    if len(args) > 3:
+                        setattr(obj, args[2].strip('"').strip(','),
+                                args[3].strip('"').strip(','))
+                        storage.save()
+                    else:
+                        print("** value missing **")
+                        return
 
     def do_quit(self, line):
         "Quit command to exit the program"
