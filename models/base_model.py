@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This module contains classes and methods/functions that are the base of other classes
+"""This module contains classes and methods/functions that
+are the base of other classes
 """
 
 
@@ -9,8 +10,8 @@ from models import storage
 
 
 class BaseModel:
-    
-    """This class 'BaseModel' defines all common attributes/methods for other classes
+    """This class 'BaseModel' defines all common
+    attributes/methods for other classes
     """
 
     def __init__(self, *args, **kwargs):
@@ -25,7 +26,8 @@ class BaseModel:
                 for key in kwargs.keys():
                     if key != '__class__':
                         if key in ['created_at', 'updated_at']:
-                            kwargs[key] = datetime.datetime.fromisoformat(kwargs[key])
+                            kwargs[key] = datetime.datetime\
+                                    .fromisoformat(kwargs[key])
                             setattr(self, key, kwargs[key])
                         else:
                             setattr(self, key, kwargs[key])
@@ -45,4 +47,5 @@ class BaseModel:
 
     def __str__(self):
         """ Return string representation of the object """
-        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}"\
+            .format(type(self).__name__, self.id, self.__dict__)
