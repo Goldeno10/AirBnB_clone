@@ -2,13 +2,17 @@
 """ base_model test module """
 
 
-from datetime import datetime
 import inspect
 import os
 import unittest
 import models
 import pycodestyle
+from datetime import datetime
+from unittest import mock
+
+
 BaseModel = models.base_model.BaseModel
+
 
 class TestBaseMethod(unittest.TestCase):
     """ Contains test methods for base_module """
@@ -17,7 +21,6 @@ class TestBaseMethod(unittest.TestCase):
         self.my_model = BaseModel()
         self.my_model.name = "My First Model"
         self.my_model.my_number = 89
-        self.my_model.save()
         self.my_model_json = self.my_model.to_dict()
         self.module_doc = models.base_model.__doc__
         self.base_methods = inspect.getmembers(BaseModel, inspect.isfunction)
@@ -43,26 +46,40 @@ class TestBaseMethod(unittest.TestCase):
     def test_module_docstring(self):
         "Test for the presence of module documentation"""
         self.assertIsNot(self.module_doc, None,
-                'Module documentation not found')
+                         'Module documentation not found')
         self.assertTrue(len(self.module_doc) > 1,
-                'Module documantation not found')
-        
+                        'Module documantation not found')
+
     def test_class_docstring(self):
         "Test for the presence of class documentation"""
         self.assertIsNot(BaseModel.__doc__, None,
-                'class documentation not found')
+                         'class documentation not found')
         self.assertTrue(len(BaseModel.__doc__) > 1,
-                'class documantation not found')
+                        'class documantation not found')
 
     def test_method_docstring(self):
         "Test for the presence of class methods documentation"""
         for method in self.base_methods:
             with self.subTest(method=method):
                 self.assertIsNot(method.__doc__, None,
-                        f'{method} documentation not found')
-        self.assertTrue(len(method.__doc__) > 1,
-                f'{method} documantation not found')
+                                 f'{method} documentation not found')
+                self.assertTrue(len(method.__doc__) > 1,
+                                f'{method} documantation not found')
+
+    @mock.patch('models.storage')
+    def test_save_method(self, mock_storage):
+        """Test that save method calls storage.save and
+        updates updated_at
+        """
+        obj = BaseModel()
+        created_at_1 = obj.created_at
+        updated_at_1 = obj.updated_at
+        obj.save()
+        created_at_2 = obj.created_at
+        updated_at_2 = obj.updated_at
+        self.assertEqual(created_at_1, created_at_2)
+        self.assertNotEqual(updated_at_1, updated_at_2)
+
 
 if __name__ == '__main__':
     unnittest.main()
-
