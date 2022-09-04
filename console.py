@@ -205,7 +205,11 @@ class HBNBCommand(cmd.Cmd):
                 if dict_flag == 1:
                     arg_str = "{" + line_l
                     arg_str = arg_str.replace('\'', '"')
-                    arg_dict = json.loads(arg_str)
+                    try:
+                        arg_dict = json.loads(arg_str)
+                    except Exception:
+                        print("** attribute name missing **")
+                        return
                     if isinstance(arg_dict, dict):
                         obj = instance[obj_id]
                         try:

@@ -8,7 +8,10 @@
     "BaseModel.57b3fbe6-9fb4-47d6-ab52-7463a6c37c32": {
         "id": "57b3fbe6-9fb4-47d6-ab52-7463a6c37c32",
         "created_at": "2022-09-04T15:53:38.866689",
-        "updated_at": "2022-09-04T15:53:38.866693",
+        "updated_at": "2022-09-04T16:41:26.957974",
+        "name": "Muha",
+        "Age": 897,
+        "Alias": "Goldeno de elgenius",
         "__class__": "BaseModel"
     },
     "City.40d744b5-1e06-428c-9ffc-05118403e777": {
@@ -32,7 +35,9 @@
     "State.bc861e1c-fc28-46e9-b68f-8103ed8ff020": {
         "id": "bc861e1c-fc28-46e9-b68f-8103ed8ff020",
         "created_at": "2022-09-04T15:53:38.866790",
-        "updated_at": "2022-09-04T15:53:38.866794",
+        "updated_at": "2022-09-04T16:48:28.894561",
+        "name": "Kaduna",
+        "location": "23 0 9",
         "__class__": "State"
     },
     "User.716c423f-b9d3-4383-b1ff-476c89ce5c5b": {
