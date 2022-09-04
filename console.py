@@ -17,6 +17,7 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
+    """This is the HBNB web app Console"""
     prompt = "(hbnb)"
 
     cls = {'BaseModel': BaseModel,
