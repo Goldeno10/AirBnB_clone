@@ -1,0 +1,11 @@
+header {
+    background: url("../images/logo.png"); 
+    background-repeat: no-repeat;
+    background-position: 20px center; 
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    font-size: 14px;
+    border-bottom: 1px solid #CCCCCC;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
