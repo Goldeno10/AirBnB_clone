@@ -1,0 +1,45 @@
+.places {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-self: center;
+}
+.places > h1 {
+    margin-left: 20px;
+    font-size: 30px;
+    width: 100%;
+}
+.places > article {
+    display: flex;
+    justify-content: center;
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+.places > article > h2 {
+    font-size: 30px;
+    text-align: center;
+    width: 390px;
+}
+.price_by_night {
+    color: #FF5A5F;
+    border: 1px solid  #FF5A5F;
+    border-radius: 4px;
+    height: 60px;
+    font-size: 30px;
+    position: relative;
+    top: 0;
+    text-align: right;
+}
+.information {
+    height: 80px;
+    border-top: 1px solid  #DDDDDD;
+    border-bottom: 1px solid  #DDDDDD;
+}
+.information > max_quest {
+    
+}
