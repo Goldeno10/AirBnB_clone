@@ -94,70 +94,72 @@
 .description {
     text-align: left;
 }
-.places .amenities {
+.amenities {
     margin-top: 40px;
     margin-left: 0;
 }
-.places .amenities ul,li{
+.amenities ul,li{
     list-style-type: none;
     text-align: left;
     margin-left: 0;
     padding-left: 0%;
 }
-.places .amenities li{
+.amenities li{
     width: 100%;
     text-align: left;
     padding-left: 30px;
 }
-.places .amenities h2 {
+
+
+.amenities h2 {
     font-size: 16px;
     border-bottom: 1px solid #DDDDDD;
     padding: 0;
     margin: 0;
     text-align: left;
 }
-.places .amenities ul,li {
+.amenities ul,li {
     list-style-type: none;
 }
-.places .reviews {
+.reviews {
     margin-top: 40px;
     margin-left: 0;
     text-align: left;
 }
-.places .reviews h2 {
+.reviews h2 {
     font-size: 16px;
     border-bottom: 1px solid #DDDDDD;
 }
-.places .reviews ul,li {
+.reviews ul,li {
     list-style-type: none;
     text-align: left;
     margin-left: 0;
     padding-left: 0;
  
 }
-.places .reviews ul li h3{
+.reviews ul li h3{
     font-size: 14px;
     margin-left: 0;
     text-align: left;
     line-height: 1ex;
 }
-.places .reviews ul li p {
+.reviews ul li p {
     font-size: 12px;
     text-align: left;
 }
-.places .amenities .tv {
+.amenities .tv {
     background: url("../images/icon_tv.png");
     background-repeat: no-repeat; 
     background-size: contain;
     background-position: top left; 
 }
-.places .amenities .pet {
+.amenities .pet {
     background: url("../images/icon_pets.png");
     background-repeat: no-repeat; 
     background-size: contain;
     background-position: top left; 
 }
-.places .amenities .wifi{
+.amenities .wifi{
     background: url("../images/icon_wifi.png");
     background-repeat: no-repeat; 
     background-size: contain;
