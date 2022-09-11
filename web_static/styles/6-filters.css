@@ -86,7 +86,6 @@ ul.popover ul li h2 {
 }
 .amenities:hover .popover > ul,li{
     display: block;
-    font-size:1em;
     margin-left: 15px;
 }
 .locations > .popover > li > ul > li {
@@ -94,5 +93,5 @@ ul.popover ul li h2 {
     margin-left: 5px;
 }
 ul li{
-    font-size: small;
+    font-size: 15px;
 }
