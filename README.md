@@ -14,7 +14,7 @@ A command interpreter is created in this segment to manage objects for the AirBn
 This project was interpreted/tested on Ubuntu 14.04 LTS and Ubuntu 22.0 LTS using python3 (version 3.10.4)
 
 ## Installation
-1. Clone this repository: `git clone "https://github.com/alexaorrico/AirBnB_clone.git"`
+1. Clone this repository: `git clone "https://github.com/Goldeno10/AirBnB_clone.git"`
 2. Access AirBnb directory: `cd AirBnB_clone`
 3. Run hbnb(interactively): `./console` and enter command
 4. Run hbnb(non-interactively): `echo "<command>" | ./console.py`
